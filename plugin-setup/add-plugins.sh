@@ -36,5 +36,11 @@ INSERT INTO plugin (id, name, description, url, autocreate, autocreate_order)
    '$PLUGIN_HOST:3003', false, 0
   WHERE NOT EXISTS (SELECT 1 FROM plugin WHERE id = 'B077BD4B-8B99-49E8-A628-9B9EA3336E57');
 
+INSERT INTO plugin (id, name, description, url, autocreate, autocreate_order)
+  SELECT '025E3619-EED7-4F99-88BA-A82E5260AF7E',
+   'Multisearch', 'Searches for lots of things at once',
+   '$PLUGIN_HOST:3004', true, 1
+  WHERE NOT EXISTS (SELECT 1 FROM plugin WHERE id = '025E3619-EED7-4F99-88BA-A82E5260AF7E');
+
 EOF
 
