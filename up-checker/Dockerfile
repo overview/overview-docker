@@ -1,8 +1,9 @@
-FROM ubuntu:vivid
+FROM postgres:9.4
 
 RUN apt-get update && apt-get install -y \
   wget
 
 COPY upcheck.sh .
 
-CMD ["./upcheck.sh"]
+ENTRYPOINT ["./upcheck.sh"]
+
