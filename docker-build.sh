@@ -1,19 +1,15 @@
 #/bin/bash
 
-cd "$(dirname "$0")"
-
+cd "$(dirname "$0")"/..
 
 # Support services
-docker build -t overview/database database
-docker build -t overview/message-broker message-broker
-
+docker build --rm -t overview/database database
+docker build --rm -t overview/searchindex searchindex
 
 # Create a base with everything built and staged
-docker build -t overview/overview-base  overview-base
+docker build --rm -t overview/overview-base overview-base
 
-# Overview services
-docker build -t overview/db-evolution-applier db-evolution-applier
-docker build -t overview/documentset-worker documentset-worker
-docker build -t overview/worker worker
-
-docker build -t overview/web web
+docker build --rm -t overview/db-evolution-applier db-evolution-applier
+docker build --rm -t overview/documentset-worker documentset-worker
+docker build --rm -t overview/worker worker
+docker build --rm -t overview/web web
