@@ -1,12 +1,5 @@
 FROM overview/overview-base
 
-ENV \
-  DATABASE_NAME=overview \
-  DATABASE_PORT=5432 \
-  ES_CLUSTER_NAME=overview \
-  REDIS_PORT=6379 \
-  BLOB_STORAGE_FILE_BASE_DIRECTORY=/var/lib/overview/blob-storage
-
 EXPOSE 9000
 
 RUN \

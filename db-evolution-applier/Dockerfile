@@ -1,9 +1,5 @@
 FROM overview/overview-base
 
-ENV \
-  DATABASE_NAME=overview \
-  DATABASE_PORT=5432
-
 RUN \
   export FILENAMES="$(unzip -qq -p production.zip archive/db-evolution-applier/classpath.txt | \
     sed -e 's/^/archive\/lib\//')" && \

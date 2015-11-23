@@ -14,12 +14,6 @@ RUN apt-get update && apt-get install -y \
   tesseract-ocr-spa \
   tesseract-ocr-swe 
 
-ENV \
-  DATABASE_NAME=overview \
-  DATABASE_PORT=5432 \
-  ES_CLUSTER_NAME=overview \
-  BLOB_STORAGE_FILE_BASE_DIRECTORY=/var/lib/overview/blob-storage
-
 RUN \
   export FILENAMES="$(unzip -qq -p production.zip archive/documentset-worker/classpath.txt | \
     sed -e 's/^/archive\/lib\//')" && \
