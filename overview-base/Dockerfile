@@ -11,6 +11,6 @@ ENV LC_ALL=en_US.UTF-8
 
 RUN \
   mkdir /opt/overview && \
-  wget -P /opt/overview https://s3.amazonaws.com/overview-builds/production.zip
+  wget -P /opt/overview https://s3.amazonaws.com/overview-builds/bfd7b266a28ff91e0a7adfb32bc74ec43c12d5ea.zip
 
 WORKDIR /opt/overview
