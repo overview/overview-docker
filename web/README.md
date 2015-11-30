@@ -12,4 +12,4 @@ Links to:
 - Searchindex named `overview-searchindex` listening on port 9300.
 - Redis host named `overview-redis` listening on port 6379.
 - Blob-storage volume shared with the workers, mounted on `/var/lib/overview/blob-storage`.
-- Our server, named `overview-documentset-worker`.
+- Our worker, named `worker`.
