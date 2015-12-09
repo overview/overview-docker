@@ -12,4 +12,4 @@ CMD ["/usr/bin/java", \
        "-cp", "bin/*", \
         "-Dfile.encoding=UTF8", \
         "-Duser.timezone=UTC", \
-        "JobHandler"]
+        "com.overviewdocs.Worker"]
