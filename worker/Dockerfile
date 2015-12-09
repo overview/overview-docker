@@ -1,5 +1,19 @@
 FROM overview/overview-base
 
+RUN apt-get update && apt-get install -y \
+  libreoffice \
+  tesseract-ocr \
+  tesseract-ocr-ara \
+  tesseract-ocr-cat \
+  tesseract-ocr-deu \
+  tesseract-ocr-fra \
+  tesseract-ocr-ita \
+  tesseract-ocr-nld \
+  tesseract-ocr-por \
+  tesseract-ocr-rus \
+  tesseract-ocr-spa \
+  tesseract-ocr-swe 
+
 RUN \
   export FILENAMES="$(unzip -qq -p production.zip archive/worker/classpath.txt | \
     sed -e 's/^/archive\/lib\//')" && \
