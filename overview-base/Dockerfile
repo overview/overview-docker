@@ -11,6 +11,6 @@ ENV LC_ALL=en_US.UTF-8
 
 RUN \
   mkdir /opt/overview && \
-  curl https://s3.amazonaws.com/overview-builds/d038cc19c01f3591b0ab468fe9202f02485a34bc.zip -o /opt/overview/production.zip
+  curl https://s3.amazonaws.com/overview-builds/92603f5e8f55a797a172f1e2cef820dba03c62d5.zip -o /opt/overview/production.zip
 
 WORKDIR /opt/overview
