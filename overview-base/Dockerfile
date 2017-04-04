@@ -3,7 +3,7 @@ FROM ubuntu:vivid
 RUN apt-get update && apt-get install -y \
   curl \
   openjdk-8-jre-headless \
-  unzip
+  unzip 
 
 RUN locale-gen en_US.UTF-8
 
