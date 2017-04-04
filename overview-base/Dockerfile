@@ -13,4 +13,6 @@ RUN \
   mkdir /opt/overview && \
   curl https://s3.amazonaws.com/overview-builds/5e60f533e7e39552a4c3e772ac251aedf2e480a1.zip -o /opt/overview/production.zip
 
+RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
+
 WORKDIR /opt/overview
