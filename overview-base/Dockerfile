@@ -15,4 +15,6 @@ RUN \
 
 RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
 
+RUN foo
+
 WORKDIR /opt/overview
