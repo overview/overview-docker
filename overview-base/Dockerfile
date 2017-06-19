@@ -5,9 +5,7 @@ RUN apt-get update && apt-get install -y \
   openjdk-8-jre-headless \
   unzip 
 
-RUN locale-gen en_US.UTF-8
-
-ENV LC_ALL=en_US.UTF-8
+ENV LC_ALL=C.UTF-8
 
 RUN \
   mkdir /opt/overview && \
