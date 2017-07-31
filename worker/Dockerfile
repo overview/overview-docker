@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
   tesseract-ocr-fra \
   tesseract-ocr-ita \
   tesseract-ocr-nld \
+  tesseract-ocr-nor \
   tesseract-ocr-por \
   tesseract-ocr-rus \
   tesseract-ocr-spa \
