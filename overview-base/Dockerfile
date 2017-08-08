@@ -9,7 +9,7 @@ ENV LC_ALL=C.UTF-8
 
 RUN \
   mkdir /opt/overview && \
-  curl https://s3.amazonaws.com/overview-builds/e7f20e35c9a77a3bd4bfe4f9700485a48d8975f8.zip -o /opt/overview/production.zip
+  curl https://s3.amazonaws.com/overview-builds/b85918ce8ab34223c9238cbbe7f95030dfc654bf.zip -o /opt/overview/production.zip
 
 RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
 
