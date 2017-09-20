@@ -11,5 +11,5 @@ The image contains LibreOffice and Tesseract, for file conversion and OCR.
 Links to:
 - Postgres server named `overview-database` listening on port 5432.
 - Searchindex named `overview-searchindex` listening on port 9300.
-- Blob-storage volume shared with the frontend, mounted on `/var/lib/overview/blob-storage`.
+- Blob-storage volume shared with `overview-web`, mounted on `/var/lib/overview/blob-storage`.
 - Web server named `overview-web`.
