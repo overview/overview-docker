@@ -39,16 +39,6 @@ VALUES (
 
 INSERT INTO plugin (id, name, description, url, autocreate, autocreate_order)
 VALUES (
-  '3444C389-F235-4DC8-BC0C-C8B7A1B66630',
-  'Regex Search',
-  'Find by regular expressions',
-  'http://$PLUGIN_HOST:3002',
-  false,
-  0
-);
-
-INSERT INTO plugin (id, name, description, url, autocreate, autocreate_order)
-VALUES (
   'B077BD4B-8B99-49E8-A628-9B9EA3336E57',
   'Folders',
   'Browse by the folders documents were uploaded from',
