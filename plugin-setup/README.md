@@ -9,8 +9,8 @@ match when running the plugins:
 
 - Word cloud: 3000
 - Entities: 3001
-- Regex Search: 3002
 - Folders: 3003
+- Multisearch: 3004
 
 ## Dependencies
 
