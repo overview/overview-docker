@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -n "$OV_PUBLIC_DOMAIN" ]; then
+  exec ./overview-proxy-ssl $OV_PUBLIC_DOMAIN
+else
+  exec ./overview-proxy-nossl
+fi
