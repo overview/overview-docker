@@ -55,7 +55,8 @@ Run `docker logs -f overview-proxy` to see its progress through the steps.
    Encrypt until networking is working.
 3. `overview-proxy` will start accepting SSL requests for
    `overview.example.com`.
-4. Now you need to repeat steps 1 and 2 for each plugin:
+4. Now add DNS entries for plugins. They should all point to the same IP
+   address. The `overview-proxy` logs will show you your progress.
    `overview-plugin-word-cloud.example.com`,
    `overview-plugin-multi-search.example.com`,
    `overview-plugin-entity-filter.example.com`
