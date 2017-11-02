@@ -17,42 +17,46 @@ DELETE FROM plugin WHERE id IN (
   '025E3619-EED7-4F99-88BA-A82E5260AF7E'
 );
 
-INSERT INTO plugin (id, name, description, url, autocreate, autocreate_order)
+INSERT INTO plugin (id, name, description, url, server_url_from_plugin, autocreate, autocreate_order)
 VALUES (
   '90115025-9C9E-4BA7-A9B7-6C9BB69A27BF',
   'Word Cloud',
   'Shows common words, sized by frequency',
   'http://$PLUGIN_HOST:3000',
+  'http://overview-web:9000',
   true,
   2
 );
 
-INSERT INTO plugin (id, name, description, url, autocreate, autocreate_order)
+INSERT INTO plugin (id, name, description, url, server_url_from_plugin, autocreate, autocreate_order)
 VALUES (
   '0E131156-E9F9-4976-B980-B0BAE916E3B6',
   'Entities',
   'Lists the places and names that appear in the documents',
   'http://$PLUGIN_HOST:3001',
+  'http://overview-web:9000',
   false,
   0
 );
 
-INSERT INTO plugin (id, name, description, url, autocreate, autocreate_order)
+INSERT INTO plugin (id, name, description, url, server_url_from_plugin, autocreate, autocreate_order)
 VALUES (
   'B077BD4B-8B99-49E8-A628-9B9EA3336E57',
   'Folders',
   'Browse by the folders documents were uploaded from',
   'http://$PLUGIN_HOST:3003',
+  'http://overview-web:9000',
   false,
   0
 );
 
-INSERT INTO plugin (id, name, description, url, autocreate, autocreate_order)
+INSERT INTO plugin (id, name, description, url, server_url_from_plugin, autocreate, autocreate_order)
 VALUES (
   '025E3619-EED7-4F99-88BA-A82E5260AF7E',
   'Multisearch',
   'Searches for lots of things at once',
   'http://$PLUGIN_HOST:3004',
+  'http://overview-web:9000',
   true,
   1
 );
