@@ -30,8 +30,6 @@ Here's what overview-local does:
 
 # Easy, Free SSL
 
-(TODO. None of this section is accurate yet. But it will be!)
-
 By default, `overview-proxy` won't handle SSL requests: you'll only be able to
 access `http://localhost:9000` (overview-web), `http://localhost:3000`
 (`overview-plugin-word-cloud`), and so forth. Requests on ports 80 and 443
