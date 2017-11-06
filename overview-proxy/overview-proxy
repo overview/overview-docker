@@ -1,7 +1,78 @@
-#!/bin/sh
+#!/bin/ash -m
 
-if [ -n "$OV_PUBLIC_DOMAIN" ]; then
-  exec ./overview-proxy-ssl $OV_PUBLIC_DOMAIN
-else
-  exec ./overview-proxy-nossl
-fi
+set -e
+
+# We're a simple "supervisor" script here. Die when Docker commands us.
+# Inspiration from:
+# http://veithen.github.io/2014/11/16/sigterm-propagation.html
+kill_children() {
+  trap - INT TERM USR2 HUP
+
+  # We need to kill the entire $SSL_PID process group, since our script
+  # forks to run acmetool.
+
+  echo "kill -9 $SYSLOG_PID $HAPROXY_PID -$SSL_PID"
+  kill -9 $SYSLOG_PID $HAPROXY_PID -$SSL_PID
+}
+trap 'kill_children' TERM INT
+
+# haproxy has an odd way of restarting: it involves rewriting HAPROXY_PID
+#
+# [adam, 2017-11-03] haproxy-systemd-wrapper -- which is the right
+# architecture -- failed on my Fedora 27 and didn't report why.
+start_haproxy() {
+  # redirect to /dev/null so haproxy doesn't mess with stdout/stderr
+  DOMAIN_NAME_START="$(echo "$OV_DOMAIN_NAME" | cut -d. -f1)" haproxy -f /haproxy.cfg -db -sf $HAPROXY_PID &
+  HAPROXY_PID=$!
+}
+
+restart_haproxy() {
+  echo "Restarting HAProxy..."
+  old_haproxy_pid=$HAPROXY_PID
+  start_haproxy
+  echo "New PID is $HAPROXY_PID; waiting for $old_haproxy_pid"
+  wait $old_haproxy_pid
+}
+
+# Run syslog, to listen to Haproxy's logs. (Haproxy does not write log files)
+# Syslog output looks like this:
+# Nov  2 16:44:06 a70838386ddb local0.notice haproxy[8]: Proxy plugin_file_browser started.
+# ... but we only want the part after "]". So we'll cut.
+#(syslogd -n -O - | cut -d']' -f2- | cut -b3-) &
+syslogd -n -O - &
+SYSLOG_PID=$!
+
+# Run haproxy
+install -D -m 0755 /_dummy-cert-just-to-make-haproxy-load.pem /var/lib/acme/haproxy/_dummy-cert-just-to-make-haproxy-load.pem
+start_haproxy
+
+# Maintain SSL
+./maintain-ssl-certs &
+SSL_PID=$!
+
+# Write the script acmetool will use to restart haproxy
+#
+# There's a race during startup. Make sure the trap is set
+# before the script is written. As long as that's done, it's
+# very unlikely the user will see a problem.
+trap 'restart_haproxy && wait $HAPROXY_PID' USR2 HUP
+mkdir -p /etc/init.d
+echo "#!/bin/sh" >/etc/init.d/haproxy
+echo "kill -USR2 1" >> /etc/init.d/haproxy
+chmod +x /etc/init.d/haproxy
+
+wait $HAPROXY_PID
+# Normally haproxy will run forever. This "wait" will return when:
+# * haproxy exits abnormally. Most commonly: a config error.
+# * Docker sends INT or TERM. That will make our "trap" invoke
+#   kill_children, which will kill $HAPROXY_PID.
+# * acme sends USR2 or HUP. That will make our "trap" invoke
+#   restart_haproxy and return to waiting.
+
+# -CLEANUP-
+# "wait" can return before the children are dead, in Bash: it returns
+# immediately after the "trap". I'm not sure about Busybox's Ash. But no
+# matter: if we've reached this point in the script, we want everything
+# to die.
+kill_children
+wait $HAPROXY_PID $SYSLOG_PID $SSL_PID
