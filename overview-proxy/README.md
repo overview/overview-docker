@@ -57,7 +57,8 @@ Run `docker logs -f overview-proxy` to see its progress through the steps.
    address. The `overview-proxy` logs will show you your progress.
    `overview-plugin-word-cloud.example.com`,
    `overview-plugin-multi-search.example.com`,
-   `overview-plugin-entity-filter.example.com`
+   `overview-plugin-entity-filter.example.com`,
+   `overview-plugin-metadata.example.com`,
    and `overview-plugin-file-browser.example.com`. (We add
    "`-plugin-word-cloud`" before the first dot in `OV_DOMAIN_NAME`.)
 

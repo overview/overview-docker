@@ -7,7 +7,7 @@ if [ -z "$OV_DOMAIN_NAME" ]; then
   exit 0
 fi
 
-SUBDOMAIN_ENDINGS="plugin-entity-filter plugin-file-browser plugin-multi-search plugin-word-cloud"
+SUBDOMAIN_ENDINGS="plugin-entity-filter plugin-file-browser plugin-metadata plugin-multi-search plugin-word-cloud"
 POLL_INTERVAL_IN_S=15
 
 # "overview.example.com" has dns_name: "overview"; dns_domain: "example.com"

@@ -14,6 +14,6 @@ RUN set -x \
 	&& install -D /usr/src/acmetool/doc/acmetool.8 /usr/share/man/man8/acmetool.8 \
 	&& rm -r acmetool.tar.gz /usr/src/acmetool
 
-EXPOSE 80 443 9000 3000 3001 3003 3004
+EXPOSE 80 443 9000 3000 3001 3003 3004 3005
 COPY haproxy.cfg maintain-ssl-certs acme-responses.yml overview-proxy _dummy-cert-just-to-make-haproxy-load.pem /
 CMD [ "/overview-proxy" ]

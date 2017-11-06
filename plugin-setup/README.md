@@ -11,9 +11,9 @@ match when running the plugins:
 - Entities: 3001
 - Folders: 3003
 - Multisearch: 3004
+- Metadata: 3005
 
 ## Dependencies
 
 Links to:
 - Postgres server named `overview-database` listening on port 5432.
-
