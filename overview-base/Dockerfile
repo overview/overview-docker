@@ -9,7 +9,7 @@ ENV LC_ALL=C.UTF-8
 
 RUN \
   mkdir /opt/overview && \
-  curl https://overview-builds.overviewdocs.com/6d9a8b334a75f7b87bcd45b525e1b517961b17ac.zip -o /opt/overview/production.zip
+  curl https://overview-builds.overviewdocs.com/7d509c50de48a2b0172d13e1a9f47008bf2eda25.zip -o /opt/overview/production.zip
 
 RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
 
