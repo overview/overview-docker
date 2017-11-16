@@ -6,6 +6,7 @@ cd "$(dirname "$0")"
 
 # Support services
 docker build --no-cache --rm -t overview/database ../database
+docker build --no-cache --rm -t overview/redis ../redis
 
 # Create a base with everything built and staged
 docker build --no-cache --rm -t overview/overview-base ../overview-base
