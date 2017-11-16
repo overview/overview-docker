@@ -75,7 +75,7 @@ RUN set -x \
 # only one copy on disk of each file.
 RUN set -x \
       && mkdir -p /opt/overview \
-      && wget https://overview-builds.overviewdocs.com/7d509c50de48a2b0172d13e1a9f47008bf2eda25.zip -O /tmp/production.zip \
+      && wget https://overview-builds.overviewdocs.com/a5affe5ceca1ff9ac6d9a8e8a0f9ba6cb3b575a3.zip -O /tmp/production.zip \
       && cd /tmp \
       && unzip /tmp/production.zip \
       && mkdir -p /opt/overview/worker /opt/overview/web /opt/overview/db-evolution-applier \
