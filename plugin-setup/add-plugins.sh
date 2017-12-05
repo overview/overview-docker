@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Find URLs of plugins, to set as iframes. The plugins will all have the
-# Overview server set at 'http://overview-web:9000' (an internal address).
+# Overview server set at 'http://overview-web' (an internal address).
 if [ -n "$OV_DOMAIN_NAME" ]; then
   # Best: `OV_DOMAIN_NAME` is set. We will auto-generate URLs based on that.
 
@@ -54,7 +54,7 @@ VALUES (
   'Word Cloud',
   'Shows common words, sized by frequency',
   '$WORD_CLOUD_URL',
-  'http://overview-web:9000',
+  'http://overview-web',
   true,
   2
 );
@@ -65,7 +65,7 @@ VALUES (
   'Entities',
   'Lists the places and names that appear in the documents',
   '$ENTITY_FILTER_URL',
-  'http://overview-web:9000',
+  'http://overview-web',
   false,
   0
 );
@@ -76,7 +76,7 @@ VALUES (
   'Folders',
   'Browse by the folders documents were uploaded from',
   '$FILE_BROWSER_URL',
-  'http://overview-web:9000',
+  'http://overview-web',
   false,
   0
 );
@@ -87,7 +87,7 @@ VALUES (
   'Multisearch',
   'Searches for lots of things at once',
   '$MULTI_SEARCH_URL',
-  'http://overview-web:9000',
+  'http://overview-web',
   true,
   1
 );
@@ -98,7 +98,7 @@ VALUES (
   'Metadata',
   'Shows current document data beside the document',
   '$METADATA_URL',
-  'http://overview-web:9000',
+  'http://overview-web',
   true,
   0
 );
