@@ -1,0 +1,63 @@
+http:
+  middlewares:
+    https-redirect:
+      regex: "^http://[^/]+/(.*)"
+      replacement: "https://{{ env "DOMAIN_NAME_START" }}.{{ env "DOMAIN_PARENT" }}/${1}"
+
+  routers:
+    plugin-entity-filter:
+      entryPoints: [ https ]
+      rule: "Host(`{{ env "DOMAIN_NAME_START" }}-plugin-entity-filter.{{ env "DOMAIN_PARENT" }}`)"
+      service: plugin-entity-filter
+      tls: { certResolver: letsencrypt }
+    plugin-file-browser:
+      entryPoints: [ https ]
+      rule: "Host(`{{ env "DOMAIN_NAME_START" }}-plugin-file-browser.{{ env "DOMAIN_PARENT" }}`)"
+      service: plugin-file-browser
+      tls: { certResolver: letsencrypt }
+    plugin-metadata:
+      entryPoints: [ https ]
+      rule: "Host(`{{ env "DOMAIN_NAME_START" }}-plugin-metadata.{{ env "DOMAIN_PARENT" }}`)"
+      service: plugin-metadata
+      tls: { certResolver: letsencrypt }
+    plugin-multi-search:
+      entryPoints: [ https ]
+      rule: "Host(`{{ env "DOMAIN_NAME_START" }}-plugin-multi-search.{{ env "DOMAIN_PARENT" }}`)"
+      service: plugin-multi-search
+      tls: { certResolver: letsencrypt }
+    plugin-word-cloud:
+      entryPoints: [ https ]
+      rule: "Host(`{{ env "DOMAIN_NAME_START" }}-plugin-word-cloud.{{ env "DOMAIN_PARENT" }}`)"
+      service: plugin-word-cloud
+      tls: { certResolver: letsencrypt }
+    web-https:
+      entryPoints: [ https ]
+      rule: "Host(`{{ env "DOMAIN_NAME_START" }}.{{ env "DOMAIN_PARENT" }}`)"
+      service: web
+      tls: { certResolver: letsencrypt }
+
+  services:
+    web:
+      loadBalancer:
+        servers:
+        - url: "http://overview-web/"
+    plugin-entity-filter:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-entity-filter/"
+    plugin-file-browser:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-file-browser/"
+    plugin-metadata:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-metadata/"
+    plugin-multi-search:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-multi-search/"
+    plugin-word-cloud:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-word-cloud/"

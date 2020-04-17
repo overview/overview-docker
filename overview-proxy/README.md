@@ -23,10 +23,8 @@ Here's what overview-local does:
 * HTTP requests on port 443: forwarded to `overview-web` and plugin containers,
   chosen by SSL [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication)
   (domain name).
-* HTTP requests on port 80: `/.well-known/acme-challenge/` is forwarded to
-  [ACME](https://hlandau.github.io/acme/) to supply free SSL certificates (via
-  [Let's Encrypt](https://letsencrypt.org/). Other requests are redirected to
-  HTTPS.
+* HTTP requests on port 80: these redirect to HTTPS. (Port 80 is used to
+  generate SSL keys.)
 
 # Easy, Free SSL
 

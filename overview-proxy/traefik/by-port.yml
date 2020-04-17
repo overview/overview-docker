@@ -1,0 +1,52 @@
+http:
+  routers:
+    by-port-web:
+      entryPoints: [ web ]
+      rule: "PathPrefix(`/`)"
+      service: web
+    by-port-plugin-entity-filter:
+      entryPoints: [ plugin-entity-filter ]
+      rule: "PathPrefix(`/`)"
+      service: plugin-entity-filter
+    by-port-plugin-file-browser:
+      entryPoints: [ plugin-file-browser ]
+      rule: "PathPrefix(`/`)"
+      service: plugin-file-browser
+    by-port-plugin-metadata:
+      entryPoints: [ plugin-metadata ]
+      rule: "PathPrefix(`/`)"
+      service: plugin-metadata
+    by-port-plugin-multi-search:
+      entryPoints: [ plugin-multi-search ]
+      rule: "PathPrefix(`/`)"
+      service: plugin-multi-search
+    by-port-plugin-word-cloud:
+      entryPoints: [ plugin-word-cloud ]
+      rule: "PathPrefix(`/`)"
+      service: plugin-word-cloud
+
+  services:
+    web:
+      loadBalancer:
+        servers:
+        - url: "http://overview-web/"
+    plugin-entity-filter:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-entity-filter/"
+    plugin-file-browser:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-file-browser/"
+    plugin-metadata:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-metadata/"
+    plugin-multi-search:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-multi-search/"
+    plugin-word-cloud:
+      loadBalancer:
+        servers:
+        - url: "http://overview-plugin-word-cloud/"

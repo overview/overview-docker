@@ -1,0 +1,39 @@
+entryPoints:
+  http:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: https
+          scheme: https
+  https:
+    address: ":443"
+  web:
+    address: ":9000"
+  plugin-entity-filter:
+    address: ":3001"
+  plugin-file-browser:
+    address: ":3002"
+  plugin-metadata:
+    address: ":3005"
+  plugin-multi-search:
+    address: ":3004"
+  plugin-word-cloud:
+    address: ":3000"
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: ""
+      storage: /var/lib/acme/traefik-acme.json
+      httpChallenge:
+        entryPoint: http
+
+providers:
+  file:
+    directory: /etc/traefik/parts
+
+log:
+  level: WARN
+
+accessLog: {}
